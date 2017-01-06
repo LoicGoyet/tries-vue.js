@@ -15,33 +15,12 @@
         {{ heading.text }}
       </h1>
 
-      <button class="btn btn-secondary btn-sm" v-on:click="reverseHeading">Reverse title</button>
-
-      <hr>
-
-      <h2>To do list</h2>
-
-      <form class="row">
-        <div class="col-md-10">
-          <div class="form-group">
-            <input v-model="todoNewEntry" type="text" class="form-control" placeholder="add a new entry">
-          </div>
-        </div>
-
-        <div class="col-md-2">
-          <button type="submit" v-on:click="addTodoEntry" class="btn btn-block btn-primary">Add</button>
-        </div>
-      </form>
-
-      <ol class="list-group">
-        <li v-for="todo in todos" v-on:click="toggleTodoEntryCheck(todo)" v-bind:class="{ 'todo-done': todo.checked }" class="list-group-item">
-          <input class="mr-1" type="checkbox" v-bind:checked="todo.checked">
-          {{ todo.text }}
-        </li>
-      </ol>
-
+      <todo></todo>
     </div>
 
+    <script src="todo.js"></script>
+    <script src="todo-header.js"></script>
+    <script src="todo-items.js"></script>
     <script src="app.js"></script>
   </body>
 </html>
