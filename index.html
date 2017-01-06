@@ -3,14 +3,43 @@
   <head>
     <meta charset="utf-8">
     <title>Tries vue.js</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.5/css/bootstrap.min.css" integrity="sha384-AysaV+vQoT3kOAXZkl02PThvDr8HYKPZhNT5h/CXfBThSRXQ6jW5DO2ekP5ViFdi" crossorigin="anonymous">
+    <link rel="stylesheet" href="./style.css">
 
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
   </head>
+
   <body>
-    <div id="app">
-      <span v-bind:title="title">
-        {{ message }}
-      </span>
+    <div class="container my-1" id="app">
+      <h1 v-bind:title="heading.title">
+        {{ heading.text }}
+      </h1>
+
+      <button class="btn btn-secondary btn-sm" v-on:click="reverseHeading">Reverse title</button>
+
+      <hr>
+
+      <h2>To do list</h2>
+
+      <form class="row">
+        <div class="col-md-10">
+          <div class="form-group">
+            <input v-model="todoNewEntry" type="text" class="form-control" placeholder="add a new entry">
+          </div>
+        </div>
+
+        <div class="col-md-2">
+          <button type="submit" v-on:click="addTodoEntry" class="btn btn-block btn-primary">Add</button>
+        </div>
+      </form>
+
+      <ol class="list-group">
+        <li v-for="todo in todos" v-on:click="toggleTodoEntryCheck(todo)" v-bind:class="{ 'todo-done': todo.checked }" class="list-group-item">
+          <input class="mr-1" type="checkbox" v-bind:checked="todo.checked">
+          {{ todo.text }}
+        </li>
+      </ol>
+
     </div>
 
     <script src="app.js"></script>
